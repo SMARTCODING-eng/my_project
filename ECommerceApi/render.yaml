@@ -1,22 +1,41 @@
-databases:
-  - name: chloestoredb
-    plan: free
-    databaseName: chloestoredb
-    user: smartco
+# A Render Blueprint for a Django app with PostgreSQL
 
+# The services you want to deploy
 services:
+  # The web service
   - type: web
-    plan: free
-    name: ECommerceApi
-    runtime: python3
-    buildCommand: './build.sh'
-    startCommand: 'python -m gunicorn ECommerceApi.asgi:application -k uvicorn.workers.UvicornWorker'
+    name: chloe-store
+    env: python
+    # Build command to install dependencies and collect static files
+    buildCommand: "./scripts/build.sh"
+    # Start command to run the Gunicorn server
+    startCommand: "gunicorn ECommerceApi.asgi:application"
+    # The root directory for the app, if different from the repo root
+    rootDir: ECommerceApi
     envVars:
-      - key: DATABASE_URL
-        fromDatabase:
-          name: chloestoredb
-          property: connectionString
+      # A secret key for Django, generated automatically by Render
       - key: SECRET_KEY
         generateValue: true
-      - key: WEB_CONCURRENCY
-        value: 4
+      # The database URL for the web service
+      - key: DATABASE_URL
+        fromDatabase:
+          name: chloe-database
+          property: connectionString
+      # The external hostname, used for ALLOWED_HOSTS
+      - key: RENDER_EXTERNAL_HOSTNAME
+        value: chloe-store.onrender.com
+
+  # The database service
+  - type: database
+    name: chloe-database
+    env: postgresql
+    databaseName: chloestore_db
+    user: chloestore
+    # Automatic creation of the database upon deployment
+    plan: free
+
+# A pre-deploy script to run Django migrations
+preDeploy:
+  - name: migrate
+    service: chloe-store
+    command: "python manage.py migrate"
