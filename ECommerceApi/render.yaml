@@ -7,7 +7,7 @@ services:
     name: chloe-store
     env: python
     # Build command to install dependencies and collect static files
-    buildCommand: "./scripts/build.sh"
+    buildCommand: "./build.sh"
     # Start command to run the Gunicorn server
     startCommand: "gunicorn ECommerceApi.asgi:application"
     # The root directory for the app, if different from the repo root
