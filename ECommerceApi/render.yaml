@@ -19,7 +19,7 @@ services:
       # The database URL for the web service
       - key: DATABASE_URL
         fromDatabase:
-          name: chloe-database
+          name: chloestoredb
           property: connectionString
       # The external hostname, used for ALLOWED_HOSTS
       - key: RENDER_EXTERNAL_HOSTNAME
@@ -27,10 +27,10 @@ services:
 
   # The database service
   - type: database
-    name: chloe-database
+    name: chloestoredb
     env: postgresql
-    databaseName: chloestore_db
-    user: chloestore
+    databaseName: chloestoredb
+    user: smartco
     # Automatic creation of the database upon deployment
     plan: free
 
@@ -38,4 +38,4 @@ services:
 preDeploy:
   - name: migrate
     service: chloe-store
-    command: "python manage.py migrate"
+    command: "python3 ECommerceApi/manage.py migrate"
