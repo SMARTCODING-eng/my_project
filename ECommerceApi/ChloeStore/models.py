@@ -6,7 +6,7 @@ class User(AbstractUser):
     profile_picture = models.ImageField(upload_to='profile_picture', unique=True, null=True)
     USER_ROLES = [
         ('owner', 'Owner'),
-        ('store_manager', 'Store_manager'),
+        ('store manager', 'Store manager'),
         ('customer', 'Customer'),
     ]
     role = models.CharField(max_length=20,choices=USER_ROLES, default='customer')
@@ -31,8 +31,8 @@ class Product(models.Model):
     category = models.ForeignKey(Category, on_delete=models.SET_NULL, null=True, related_name='products')
     stock_quantity = models.IntegerField()
     image = models.ImageField(upload_to='product_images/', blank=True)
-    created_at = models.DateTimeField(auto_now_add=True)
-    updated_at = models.DateTimeField(auto_now=True)
+    created_at = models.DateTimeField(auto_now_add=True, null=True, blank=True)
+    updated_at = models.DateTimeField(auto_now=True, null=True, blank=True)
 
     def __str__(self):
         return self.name

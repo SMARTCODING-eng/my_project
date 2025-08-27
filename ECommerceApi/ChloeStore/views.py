@@ -18,7 +18,7 @@ def register_view(request):
             return redirect('product-list')
     else:
         form = CustomUserCreationForm()
-    return render(request, 'register.html', {'form': form})
+    return render(request, 'registration/register.html', {'form': form})
 
 def login_view(request):
     """Handles user login with a form."""

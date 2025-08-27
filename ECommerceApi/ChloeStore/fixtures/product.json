@@ -1,0 +1,38 @@
+[
+  {
+    "model": "ChloeStore.Product",
+    "pk": 1,
+    "fields": {
+      "name": "Men's Classic T-Shirt",
+      "description": "A comfortable and stylish cotton t-shirt for everyday wear.",
+      "price": "10000.00",
+      "category":1,
+      "stock_quantity": 150,
+      "image": ""
+    }
+  },
+  {
+    "model": "ChloeStore.Product",
+    "pk": 2,
+    "fields": {
+      "name": "Women's Denim Jacket",
+      "description": "A versatile denim jacket perfect for all seasons.",
+      "price": "8500.00",
+      "category": 1,
+      "stock_quantity": 75,
+      "image": ""
+    }
+  },
+  {
+    "model": "ChloeStore.Product",
+    "pk": 3,
+    "fields": {
+      "name": "Bluetooth Headphones",
+      "description": "High-quality wireless headphones with noise cancellation.",
+      "price": "5000.00",
+      "category": 2,
+      "stock_quantity": 200,
+      "image": ""
+    }
+  }
+]

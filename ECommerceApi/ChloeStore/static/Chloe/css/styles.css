@@ -1,0 +1,20 @@
+/* Chloe/static/Chloe/css/styles.css */
+
+body {
+    background-color: #f8f9fa; 
+    color: #3da675; 
+}
+
+.navbar {
+    background-color: #1cb88e !important; 
+    border-bottom: 2px solid #0056b3; 
+}
+
+.navbar-brand,
+.nav-link {
+    color: #0b0404 !important; 
+}
+
+.nav-link:hover {
+    color: #1528aa !important;
+}

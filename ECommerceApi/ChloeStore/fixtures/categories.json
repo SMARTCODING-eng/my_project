@@ -1,0 +1,16 @@
+[
+  {
+    "model": "ChloeStore.category",
+    "pk": 1,
+    "fields": {
+      "name": "Clothing"
+    }
+  },
+  {
+    "model": "ChloeStore.category",
+    "pk": 2,
+    "fields": {
+      "name": "Electronics"
+    }
+  }
+]
