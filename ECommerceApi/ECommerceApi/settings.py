@@ -27,7 +27,13 @@ SECRET_KEY = 'django-insecure-uhwpky-bz0le(o$5cr=fk3%#i1!a$*bud(acuf3mug%5+%x&9k
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = False
 
-ALLOWED_HOSTS = ['https://my-project-wpgv.onrender.com']
+# ALLOWED_HOSTS = ['https://chloe-store-d7v0.onrender.com']
+RENDER_EXTERNAL_HOSTNAME = os.environ.get('RENDER_EXTERNAL_HOSTNAME')
+if RENDER_EXTERNAL_HOSTNAME:
+    ALLOWED_HOSTS = [RENDER_EXTERNAL_HOSTNAME, '127.0.0.1', 'localhost']
+else:
+    # For local development
+    ALLOWED_HOSTS = ['127.0.0.1', 'localhost']
 
 AUTH_USER_MODEL = 'ChloeStore.User'
 
