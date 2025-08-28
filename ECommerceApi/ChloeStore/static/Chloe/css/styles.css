@@ -1,13 +1,13 @@
 /* Chloe/static/Chloe/css/styles.css */
 
 body {
-    background-color: #f8f9fa; 
+    background-color: #46515c; 
     color: #3da675; 
 }
 
 .navbar {
     background-color: #1cb88e !important; 
-    border-bottom: 2px solid #0056b3; 
+    border-bottom: 2px solid #7c9bbc; 
 }
 
 .navbar-brand,
@@ -16,5 +16,5 @@ body {
 }
 
 .nav-link:hover {
-    color: #1528aa !important;
+    color: #555f9f !important;
 }
