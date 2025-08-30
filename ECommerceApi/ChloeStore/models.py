@@ -1,19 +1,7 @@
 from django.db import models
-from django.contrib.auth.models import AbstractUser
+from accounts.models import User
 
 
-class User(AbstractUser):
-    profile_picture = models.ImageField(upload_to='profile_picture', unique=True, null=True)
-    USER_ROLES = [
-        ('owner', 'Owner'),
-        ('store manager', 'Store manager'),
-        ('customer', 'Customer'),
-    ]
-    role = models.CharField(max_length=20,choices=USER_ROLES, default='customer')
-    profile_picture = models.ImageField(upload_to='profile_pictures/')
-
-    class Meta:
-        swappable = 'AUTH_USER_MODEL'
 
 
 class Category(models.Model):
@@ -34,6 +22,8 @@ class Product(models.Model):
     created_at = models.DateTimeField(auto_now_add=True, null=True, blank=True)
     updated_at = models.DateTimeField(auto_now=True, null=True, blank=True)
 
+    class Meta:
+        ordering = ['-created_at']
     def __str__(self):
         return self.name
 

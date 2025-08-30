@@ -28,12 +28,7 @@ SECRET_KEY = 'django-insecure-uhwpky-bz0le(o$5cr=fk3%#i1!a$*bud(acuf3mug%5+%x&9k
 DEBUG = True
 # os.environ.get('DEBUG', 'False').lower() == 'true'
 
-ALLOWED_HOSTS = [
-    'chloe-store-d7v0.onrender.com',
-    'localhost',
-    '127.0.0.1',
-    '.onrender.com',
-]
+ALLOWED_HOSTS = ['*']
 # RENDER_EXTERNAL_HOSTNAME = os.environ.get('RENDER_EXTERNAL_HOSTNAME')
 # if RENDER_EXTERNAL_HOSTNAME:
 #     ALLOWED_HOSTS = [RENDER_EXTERNAL_HOSTNAME, '127.0.0.1', 'localhost']
@@ -41,7 +36,7 @@ ALLOWED_HOSTS = [
 #     # For local development
 #     ALLOWED_HOSTS = ['127.0.0.1', 'localhost']
 
-AUTH_USER_MODEL = 'ChloeStore.User'
+AUTH_USER_MODEL = 'accounts.User'
 
 # Application definition
 
@@ -53,7 +48,9 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'rest_framework',
+    'accounts',
     'ChloeStore',
+    'django_filters',
 ]
 
 MIDDLEWARE = [
@@ -171,6 +168,15 @@ REST_FRAMEWORK = {
     'DEFAULT_RENDERER_CLASSES': [
         'rest_framework.renderers.JSONRenderer',
     ],
+    'DEFAULT_PAGINATION_CLASS': 'rest_framework.pagination.PageNumberPagination',
+    'PAGE_SIZE': 20,
+    'ORDERING_PARAM': 'ordering',
+
+    'DEFAULT_FILTER_BACKENDS': [
+        'django_filters.rest_framework.DjangoFilterBackend',
+        'rest_framework.filters.OrderingFilter',
+        'rest_framework.filters.SearchFilter',
+    ]
 }
 
 

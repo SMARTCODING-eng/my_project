@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>SmartStore - Premium Shopping Experience</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    }
+    
+    body {
+      background: linear-gradient(135deg, #f9fafb 0%, #e5e7eb 100%);
+      color: #1f2937;
+      line-height: 1.6;
+    }
+    
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 20px;
+    }
+    
+    
+    nav {
+      background: #2563eb;
+      color: white;
+      padding: 0.8rem 0;
+      box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+    
+    .nav-container {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    
+    .logo {
+      font-size: 1.8rem;
+      font-weight: 700;
+      display: flex;
+      align-items: center;
+    }
+    
+    .logo i {
+      margin-right: 10px;
+    }
+    
+    .nav-links {
+      display: flex;
+      list-style: none;
+    }
+    
+    .nav-links li {
+      margin-left: 2rem;
+    }
+    
+    .nav-links a {
+      color: white;
+      text-decoration: none;
+      font-weight: 500;
+      padding: 0.5rem 0.8rem;
+      border-radius: 4px;
+      transition: background 0.3s;
+    }
+    
+    .nav-links a:hover {
+      background: rgba(255, 255, 255, 0.1);
+    }
+    
+    /* Hero Section */
+    .hero {
+      text-align: center;
+      padding: 5rem 1rem;
+      background: linear-gradient(rgba(37, 99, 235, 0.9), rgba(29, 78, 216, 0.9)), url('https://images.unsplash.com/photo-1607082348824-0a96f2a4b9da?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80') no-repeat center/cover;
+      color: white;
+      border-radius: 0 0 20px 20px;
+      margin-bottom: 3rem;
+    }
+    
+    .hero h1 {
+      font-size: 3rem;
+      margin-bottom: 1rem;
+    }
+    
+    .hero p {
+      font-size: 1.2rem;
+      max-width: 700px;
+      margin: 0 auto 2rem;
+    }
+    
+    .cta-button {
+      display: inline-block;
+      background: white;
+      color: #2563eb;
+      padding: 0.8rem 2rem;
+      border-radius: 30px;
+      text-decoration: none;
+      font-weight: 600;
+      transition: transform 0.3s, box-shadow 0.3s;
+    }
+    
+    .cta-button:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+    }
+    
+    /* Features Section */
+    .features {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 2rem;
+      margin-bottom: 4rem;
+    }
+    
+    .feature-card {
+      background: white;
+      padding: 2rem;
+      border-radius: 10px;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+      text-align: center;
+      transition: transform 0.3s;
+    }
+    
+    .feature-card:hover {
+      transform: translateY(-5px);
+    }
+    
+    .feature-card i {
+      font-size: 2.5rem;
+      color: #2563eb;
+      margin-bottom: 1rem;
+    }
+    
+    .feature-card h3 {
+      margin-bottom: 1rem;
+      color: #1f2937;
+    }
+    
+    /* Footer */
+    footer {
+      background: #1f2937;
+      color: white;
+      padding: 3rem 0;
+      text-align: center;
+      margin-top: 4rem;
+    }
+    
+    .footer-content {
+      max-width: 700px;
+      margin: 0 auto;
+    }
+    
+    /* Responsive Design */
+    @media (max-width: 768px) {
+      .nav-container {
+        flex-direction: column;
+      }
+      
+      .nav-links {
+        margin-top: 1rem;
+      }
+      
+      .nav-links li {
+        margin: 0 0.5rem;
+      }
+      
+      .hero h1 {
+        font-size: 2.2rem;
+      }
+      
+      .hero p {
+        font-size: 1rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  <!-- Navigation Bar -->
+  <nav>
+    <div class="container nav-container">
+      <div class="logo">
+        <i class="fas fa-store"></i>
+        <span>SmartStore</span>
+      </div>
+      <ul class="nav-links">
+        <li><a href="/accounts/"><i class="fas fa-user"></i> Accounts</a></li>
+        <li><a href="/store/"><i class="fas fa-shopping-bag"></i> Store</a></li>
+        <li><a href="#"><i class="fas fa-gift"></i> Deals</a></li>
+        <li><a href="#"><i class="fas fa-headset"></i> Support</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <!-- Hero Section -->
+  <section class="hero">
+    <div class="container">
+      <h1>Welcome to SmartStore</h1>
+      <p>Discover endless style with SmartStore. Shop the latest trends in fashion, electronics, and home goods. Enjoy secure payments, fast delivery, and exclusive deals.</p>
+      <a href="/store/" class="cta-button">Start Shopping Now</a>
+    </div>
+  </section>
+
+  <!-- Features Section -->
+  <section class="container">
+    <div class="features">
+      <div class="feature-card">
+        <i class="fas fa-truck-fast"></i>
+        <h3>Fast Delivery</h3>
+        <p>Get your orders delivered to your doorstep in record time with our optimized logistics network.</p>
+      </div>
+      <div class="feature-card">
+        <i class="fas fa-shield-alt"></i>
+        <h3>Secure Payments</h3>
+        <p>Shop with confidence using our bank-grade security protocols for all transactions.</p>
+      </div>
+      <div class="feature-card">
+        <i class="fas fa-tags"></i>
+        <h3>Exclusive Deals</h3>
+        <p>Enjoy special discounts and offers available only to SmartStore members.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer>
+    <div class="container footer-content">
+      <p>This project is built to test how api works in real productions</p>
+      <p>&copy; 2025 SmartStore. All rights reserved.</p>
+    </div>
+  </footer>
+</body>
+</html>
