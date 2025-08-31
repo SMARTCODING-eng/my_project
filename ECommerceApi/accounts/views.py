@@ -3,7 +3,9 @@ from rest_framework.views import APIView
 from rest_framework.response import Response
 from django.contrib.auth import authenticate, login, logout
 from .models import User
-from .serializers import UserSerializer, LoginSerializer
+from .serializers import UserSerializer, LoginSerializer    
+from rest_framework.reverse import reverse
+from rest_framework.decorators import api_view
 
 
 
@@ -54,4 +56,13 @@ class UserViewSet(viewsets.ModelViewSet):
         if self.action == 'create':
             return [permissions.AllowAny()]
         return [permissions.IsAuthenticated()]
-
+    
+@api_view(['GET'])
+def api_root(request, format=None):
+    return Response({
+        'users': reverse('user-list', request=request, format=format),
+        'register': reverse('register', request=request, format=format),
+        'login': reverse('login', request=request, format=format),
+        'logout': reverse('logout', request=request, format=format),
+        'docs': reverse('user-docs', request=request, format=format),
+    })
