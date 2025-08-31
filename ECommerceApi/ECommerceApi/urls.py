@@ -25,9 +25,9 @@ from ChloeStore.views import APIDashboardView
 urlpatterns = [
     path('', TemplateView.as_view(template_name='home.html'), name='home'),
     path('admin/', admin.site.urls),
-    path('store/', include('ChloeStore.urls')),
-    path('accounts/', include('accounts.urls')),
-    path('api/accounts/', include('django.contrib.auth.urls')),
+    path('store/', include('ChloeStore.urls'), name='store'),
+    path('accounts/', include('accounts.urls'), name='accounts'),
+    path('api/auth/', include('django.contrib.auth.urls'), name='auth'),
     path('api/dashboard/', APIDashboardView.as_view(), name='api-dashboard'),
     
 ]
