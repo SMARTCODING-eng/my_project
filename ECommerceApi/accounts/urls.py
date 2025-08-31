@@ -4,15 +4,18 @@ from .views import *
 
 router = DefaultRouter()
 router.register(r'users', UserViewSet)
+router.register(r'register', RegisterView, basename='register')
+router.register(r'login', LoginView, basename='login')
+router.register(r'logout', LogoutView, basename='logout')
 
 urlpatterns = [
     # path('', accounts_home, name='user'),
-    path('register/', RegisterView.as_view(template_name='accounts/register.html'), name='register'),
-    path('login/', LoginView.as_view(template_name='accounts/login.html'), name='login'),
-    path('logout/', LogoutView.as_view(), name='logout'),
+    # path('accounts/register/', RegisterView.as_view(), name='register'),
+    # path('accounts/login/', LoginView.as_view(), name='login'),
+    # path('accounts/logout/', LogoutView.as_view(), name='logout'),
     path('api-auth/', include('rest_framework.urls')),
 
-    
-    path('api/', include(router.urls)),
+
+    path('', include(router.urls)),
 ]
 
