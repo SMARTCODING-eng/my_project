@@ -1,7 +1,7 @@
 from django.urls import path, include
 from . import views
 from rest_framework.routers import DefaultRouter
-from rest_framework.documentation import include_docs_urls
+# from rest_framework.documentation import include_docs_urls
 
 
 router = DefaultRouter()
@@ -22,6 +22,6 @@ urlpatterns = [
     path('api/dashboard/', views.api_dashboard, name='api-dashboard'),
     path('api/docs/', views.api_docs, name='api-docs'),
     path('api/schema/', views.api_schema, name='api-schema'),
-    path('docs/', include_docs_urls(title='Store API Documentation')),
+    # path('docs/', include_docs_urls(title='Store API Documentation')),
 ]
 
