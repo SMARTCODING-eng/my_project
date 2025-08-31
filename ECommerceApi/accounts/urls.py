@@ -9,6 +9,7 @@ router.register(r'login', LoginView, basename='login')
 router.register(r'logout', LogoutView, basename='logout')
 
 urlpatterns = [
+    path('accounts', include(router.urls)),
     # path('', accounts_home, name='user'),
     # path('accounts/register/', RegisterView.as_view(), name='register'),
     # path('accounts/login/', LoginView.as_view(), name='login'),
@@ -16,6 +17,6 @@ urlpatterns = [
     path('api-auth/', include('rest_framework.urls')),
 
 
-    path('', include(router.urls)),
+    
 ]
 
