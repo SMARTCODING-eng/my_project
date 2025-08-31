@@ -1,128 +1,57 @@
-from django.shortcuts import render, redirect
-from django.views import View
-from django.views.generic import CreateView, FormView
-from django.contrib.auth import login, logout, authenticate
-from django.contrib import messages
-from django.contrib.auth.forms import AuthenticationForm
-from django.urls import reverse_lazy
-from django.utils.decorators import method_decorator
-from django.views.decorators.csrf import csrf_protect
-from django.views.decorators.cache import never_cache
+from rest_framework import status, permissions, viewsets
+from rest_framework.views import APIView
 from rest_framework.response import Response
-from rest_framework import viewsets, permissions
+from django.contrib.auth import authenticate, login, logout
 from .models import User
-from .forms import CustomUserCreationForm
-from .serializers import UserSerializer
-from rest_framework.decorators import api_view, renderer_classes
-from rest_framework.renderers import JSONRenderer, TemplateHTMLRenderer
+from .serializers import UserSerializer, LoginSerializer
 
 
-def accounts_home(request):
-    return render(request, 'accounts/account_home.html')
 
-class RegisterView(CreateView):
-    """Handles user registration with a form."""
-    form_class = CustomUserCreationForm
-    template_name = 'accounts/register.html'
-    success_url = reverse_lazy('product-list')
-    
-    @method_decorator(csrf_protect)
-    @method_decorator(never_cache)
-    def dispatch(self, *args, **kwargs):
-        return super().dispatch(*args, **kwargs)
-    
-    def form_valid(self, form):
-        response = super().form_valid(form)
-        user = form.save()
-        login(self.request, user)
-        messages.success(self.request, 'Registration successful.')
-        return response
-    
-    def form_invalid(self, form):
-        messages.error(self.request, 'Please correct the errors below.')
-        return super().form_invalid(form)
+class RegisterView(APIView):
+    """
+    API endpoint for user registration.
+    """
+    permission_classes = [permissions.AllowAny]
 
-
-class LoginView(FormView):
-    """Handles user login with a form."""
-    form_class = AuthenticationForm
-    template_name = 'registration/login.html'
-    success_url = reverse_lazy('product-list')
-    
-    @method_decorator(csrf_protect)
-    @method_decorator(never_cache)
-    def dispatch(self, *args, **kwargs):
-        if self.request.user.is_authenticated:
-            return redirect(self.success_url)
-        return super().dispatch(*args, **kwargs)
-    
-    def form_valid(self, form):
-        username = form.cleaned_data.get('username')
-        password = form.cleaned_data.get('password')
-        user = authenticate(username=username, password=password)
-        
-        if user is not None:
-            login(self.request, user)
-            messages.info(self.request, f'You are now logged in as {username}.')
-            return super().form_valid(form)
-        else:
-            messages.error(self.request, 'Invalid username or password.')
-            return self.form_invalid(form)
-    
-    def form_invalid(self, form):
-        messages.error(self.request, 'Invalid username or password.')
-        return super().form_invalid(form)
-
-
-class LogoutView(View):
-    """Logs out the authenticated user."""
-    template_name = 'template/registration/logout.html'
-
-    def get(self, request):
-        logout(request)
-        messages.info(request, 'You have been logged out successfully.')
-        return redirect('product-list')
-    
     def post(self, request):
-        return self.get(request)
+        serializer = UserSerializer(data=request.data)
+        if serializer.is_valid():
+            user = serializer.save()
+            return Response(serializer.data, status=status.HTTP_201_CREATED)
+        return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
+class LoginView(APIView):
+    """
+    API endpoint for user login.
+    """
+    permission_classes = [permissions.AllowAny]
+
+    def post(self, request):
+        serializer = LoginSerializer(data=request.data)
+        serializer.is_valid(raise_exception=True)
+        user = serializer.validated_data['user']
+        login(request, user)  
+        return Response({'message': 'Login successful'}, status=status.HTTP_200_OK)
+
+class LogoutView(APIView):
+    """
+    API endpoint for user logout.
+    """
+    permission_classes = [permissions.IsAuthenticated]
+
+    def post(self, request):
+        logout(request)
+        return Response({'message': 'Logged out successfully'}, status=status.HTTP_200_OK)
 
 class UserViewSet(viewsets.ModelViewSet):
+    """
+    API endpoint that allows users to be viewed or edited.
+    """
     queryset = User.objects.all()
     serializer_class = UserSerializer
-    
+
     def get_permissions(self):
-        """Allow anyone to create user, but require auth for other actions."""
         if self.action == 'create':
             return [permissions.AllowAny()]
         return [permissions.IsAuthenticated()]
-    
-    def perform_create(self, serializer):
-        """Additional actions when creating a user."""
-        user = serializer.save()
-        return user
 
-def api_dashboard(request):
-    """Render the API dashboard with all endpoints"""
-    context = {
-        'title': 'API Dashboard',
-        'description': 'Access all available API endpoints for integration'
-    }
-    return render(request, 'api_dashboard.html', context)
-
-@api_view(['GET'])
-@renderer_classes([TemplateHTMLRenderer, JSONRenderer])
-def api_docs(request):
-    """API documentation page"""
-    if request.accepted_renderer.format == 'html':
-        return render(request, 'api_documentation.html', {})
-    # Return JSON data for API requests
-    return Response({
-        'message': 'API Documentation',
-        'endpoints': {
-            'products': '/store/api/products/',
-            'categories': '/store/api/categories/',
-            'orders': '/store/api/orders/',
-            'payments': '/store/api/payments/',
-        }
-    })
