@@ -1,240 +1,459 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>SmartStore - Premium Shopping Experience</title>
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-  <style>
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    }
-    
-    body {
-      background: linear-gradient(135deg, #f9fafb 0%, #e5e7eb 100%);
-      color: #1f2937;
-      line-height: 1.6;
-    }
-    
-    .container {
-      max-width: 1200px;
-      margin: 0 auto;
-      padding: 0 20px;
-    }
-    
-    
-    nav {
-      background: #2563eb;
-      color: white;
-      padding: 0.8rem 0;
-      box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
-      position: sticky;
-      top: 0;
-      z-index: 100;
-    }
-    
-    .nav-container {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-    }
-    
-    .logo {
-      font-size: 1.8rem;
-      font-weight: 700;
-      display: flex;
-      align-items: center;
-    }
-    
-    .logo i {
-      margin-right: 10px;
-    }
-    
-    .nav-links {
-      display: flex;
-      list-style: none;
-    }
-    
-    .nav-links li {
-      margin-left: 2rem;
-    }
-    
-    .nav-links a {
-      color: white;
-      text-decoration: none;
-      font-weight: 500;
-      padding: 0.5rem 0.8rem;
-      border-radius: 4px;
-      transition: background 0.3s;
-    }
-    
-    .nav-links a:hover {
-      background: rgba(255, 255, 255, 0.1);
-    }
-    
-    /* Hero Section */
-    .hero {
-      text-align: center;
-      padding: 5rem 1rem;
-      background: linear-gradient(rgba(37, 99, 235, 0.9), rgba(29, 78, 216, 0.9)), url('https://images.unsplash.com/photo-1607082348824-0a96f2a4b9da?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80') no-repeat center/cover;
-      color: white;
-      border-radius: 0 0 20px 20px;
-      margin-bottom: 3rem;
-    }
-    
-    .hero h1 {
-      font-size: 3rem;
-      margin-bottom: 1rem;
-    }
-    
-    .hero p {
-      font-size: 1.2rem;
-      max-width: 700px;
-      margin: 0 auto 2rem;
-    }
-    
-    .cta-button {
-      display: inline-block;
-      background: white;
-      color: #2563eb;
-      padding: 0.8rem 2rem;
-      border-radius: 30px;
-      text-decoration: none;
-      font-weight: 600;
-      transition: transform 0.3s, box-shadow 0.3s;
-    }
-    
-    .cta-button:hover {
-      transform: translateY(-3px);
-      box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
-    }
-    
-    /* Features Section */
-    .features {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-      gap: 2rem;
-      margin-bottom: 4rem;
-    }
-    
-    .feature-card {
-      background: white;
-      padding: 2rem;
-      border-radius: 10px;
-      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
-      text-align: center;
-      transition: transform 0.3s;
-    }
-    
-    .feature-card:hover {
-      transform: translateY(-5px);
-    }
-    
-    .feature-card i {
-      font-size: 2.5rem;
-      color: #2563eb;
-      margin-bottom: 1rem;
-    }
-    
-    .feature-card h3 {
-      margin-bottom: 1rem;
-      color: #1f2937;
-    }
-    
-    /* Footer */
-    footer {
-      background: #1f2937;
-      color: white;
-      padding: 3rem 0;
-      text-align: center;
-      margin-top: 4rem;
-    }
-    
-    .footer-content {
-      max-width: 700px;
-      margin: 0 auto;
-    }
-    
-    /* Responsive Design */
-    @media (max-width: 768px) {
-      .nav-container {
-        flex-direction: column;
-      }
-      
-      .nav-links {
-        margin-top: 1rem;
-      }
-      
-      .nav-links li {
-        margin: 0 0.5rem;
-      }
-      
-      .hero h1 {
-        font-size: 2.2rem;
-      }
-      
-      .hero p {
-        font-size: 1rem;
-      }
-    }
-  </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ChloeStore - Home</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --primary: #4361ee;
+            --primary-dark: #3a56d4;
+            --secondary: #7209b7;
+            --light: #f8f9fa;
+            --dark: #212529;
+            --gray: #6c757d;
+            --success: #4cc9f0;
+            --error: #e63946;
+            --border-radius: 12px;
+            --shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+            --transition: all 0.3s ease;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: var(--dark);
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 20px;
+        }
+        
+        .container {
+            width: 100%;
+            max-width: 1200px;
+            background: white;
+            border-radius: var(--border-radius);
+            box-shadow: var(--shadow);
+            overflow: hidden;
+            margin-top: 20px;
+        }
+        
+        header {
+            background: linear-gradient(to right, var(--primary), var(--secondary));
+            color: white;
+            padding: 30px;
+            text-align: center;
+        }
+        
+        .logo {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 15px;
+            font-size: 1.8rem;
+            font-weight: 700;
+        }
+        
+        .logo i {
+            margin-right: 10px;
+        }
+        
+        .view-tabs {
+            display: flex;
+            background: #f8f9fa;
+            border-bottom: 1px solid #dee2e6;
+        }
+        
+        .tab {
+            padding: 15px 20px;
+            cursor: pointer;
+            transition: var(--transition);
+            font-weight: 500;
+            text-align: center;
+            flex: 1;
+            border-bottom: 3px solid transparent;
+        }
+        
+        .tab.active {
+            border-bottom: 3px solid var(--primary);
+            background: white;
+            color: var(--primary);
+            font-weight: 600;
+        }
+        
+        .tab-content {
+            display: none;
+            padding: 30px;
+        }
+        
+        .tab-content.active {
+            display: block;
+        }
+        
+        .product-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 20px;
+            margin-bottom: 30px;
+        }
+        
+        .product-card {
+            background: white;
+            border-radius: var(--border-radius);
+            overflow: hidden;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+            transition: var(--transition);
+            border: 1px solid #eee;
+        }
+        
+        .product-card:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow);
+        }
+        
+        .product-image {
+            height: 180px;
+            background-color: #f1f5f9;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .product-image i {
+            font-size: 3rem;
+            color: #64748b;
+        }
+        
+        .product-info {
+            padding: 20px;
+        }
+        
+        .product-title {
+            font-size: 1.1rem;
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+            color: var(--dark);
+        }
+        
+        .product-price {
+            font-size: 1.2rem;
+            font-weight: 700;
+            color: var(--primary);
+            margin-bottom: 10px;
+        }
+        
+        .api-response {
+            background: #f8f9fa;
+            border-radius: var(--border-radius);
+            padding: 20px;
+            margin-top: 20px;
+            max-height: 400px;
+            overflow-y: auto;
+        }
+        
+        .json-code {
+            background: #2d2d2d;
+            color: #f8f9fa;
+            padding: 15px;
+            border-radius: var(--border-radius);
+            font-family: 'Courier New', monospace;
+            overflow-x: auto;
+        }
+        
+        .json-key {
+            color: #ff6b6b;
+        }
+        
+        .json-string {
+            color: #a3d9b1;
+        }
+        
+        .json-number {
+            color: #6eb6ff;
+        }
+        
+        .json-boolean {
+            color: #ffd43b;
+        }
+        
+        .btn {
+            display: inline-block;
+            padding: 10px 20px;
+            background: var(--primary);
+            color: white;
+            text-decoration: none;
+            border-radius: var(--border-radius);
+            font-weight: 500;
+            transition: var(--transition);
+            border: none;
+            cursor: pointer;
+            margin-top: 10px;
+        }
+        
+        .btn:hover {
+            background: var(--primary-dark);
+            transform: translateY(-2px);
+        }
+        
+        .btn-outline {
+            background: transparent;
+            border: 2px solid var(--primary);
+            color: var(--primary);
+        }
+        
+        .btn-outline:hover {
+            background: var(--primary);
+            color: white;
+        }
+        
+        .loading {
+            text-align: center;
+            padding: 30px;
+            color: var(--gray);
+        }
+        
+        .loading i {
+            font-size: 2rem;
+            margin-bottom: 10px;
+            color: var(--primary);
+        }
+        
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+        
+        .fa-spinner {
+            animation: spin 1s linear infinite;
+        }
+        
+        @media (max-width: 768px) {
+            .product-grid {
+                grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+            }
+            
+            .view-tabs {
+                flex-direction: column;
+            }
+            
+            .tab {
+                border-bottom: 1px solid #dee2e6;
+                border-left: 3px solid transparent;
+            }
+            
+            .tab.active {
+                border-bottom: 1px solid #dee2e6;
+                border-left: 3px solid var(--primary);
+            }
+        }
+        
+        .empty-state {
+            text-align: center;
+            padding: 40px;
+            color: var(--gray);
+        }
+        
+        .empty-state i {
+            font-size: 3rem;
+            margin-bottom: 15px;
+            color: #dee2e6;
+        }
+    </style>
 </head>
 <body>
-  <!-- Navigation Bar -->
-  <nav>
-    <div class="container nav-container">
-      <div class="logo">
-        <i class="fas fa-store"></i>
-        <span>SmartStore</span>
-      </div>
-      <ul class="nav-links">
-        <li><a href="/accounts/"><i class="fas fa-user"></i> Accounts</a></li>
-        <li><a href="/store/"><i class="fas fa-shopping-bag"></i> Store</a></li>
-        <li><a href="#"><i class="fas fa-gift"></i> Deals</a></li>
-        <li><a href="#"><i class="fas fa-headset"></i> Support</a></li>
-      </ul>
-    </div>
-  </nav>
-
-  <!-- Hero Section -->
-  <section class="hero">
     <div class="container">
-      <h1>Welcome to SmartStore</h1>
-      <p>Discover endless style with SmartStore. Shop the latest trends in fashion, electronics, and home goods. Enjoy secure payments, fast delivery, and exclusive deals.</p>
-      <a href="/store/" class="cta-button">Start Shopping Now</a>
+        <header>
+            <div class="logo">
+                <i class="fas fa-store"></i>
+                <span>SmartStore</span>
+            </div>
+            <h1>Welcome to SmartStore</h1>
+            <p>Discover amazing products at great prices</p>
+        </header>
+        
+        <div class="view-tabs">
+            <div class="tab active" data-tab="template-view">Template View</div>
+            <div class="tab active" data-tab="api-view">API View</div>
+        </div>
+        
+        <!-- Template View -->
+        <div class="tab-content active" id="template-view">
+            <h2>Our Products</h2>
+            <p>Browse our collection of high-quality products</p>
+            
+            <div class="product-grid">
+                {% for product in products %}
+                <div class="product-card">
+                    <div class="product-image">
+                        <i class="fas fa-box"></i>
+                    </div>
+                    <div class="product-info">
+                        <h3 class="product-title">{{ product.name }}</h3>
+                        <div class="product-price">${{ product.price }}</div>
+                        <p style="color: #64748b; margin-top: 0.5rem; font-size: 0.9rem;">
+                            In stock: {{ product.stock_quantity }}
+                        </p>
+                        <a href="/store/products/{{ product.id }}/" class="btn btn-outline">View Details</a>
+                    </div>
+                </div>
+                {% empty %}
+                <div class="empty-state">
+                    <i class="fas fa-box-open"></i>
+                    <h3>No products available</h3>
+                    <p>Check back later for new products</p>
+                </div>
+                {% endfor %}
+            </div>
+            
+            <div style="text-align: center; margin-top: 20px;">
+                <a href="/store/products/list/" class="btn">View All Products</a>
+            </div>
+        </div>
+        
+        <!-- API View -->
+        <div class="tab-content" id="api-view">
+            <h2>API Data</h2>
+            <p>View our product data in JSON format from the API endpoint</p>
+            
+            <div class="api-response">
+                <div class="loading" id="api-loading">
+                    <i class="fas fa-spinner"></i>
+                    <p>Loading API data...</p>
+                </div>
+                <div class="json-code" id="api-data" style="display: none;">
+                    {/* API data will be inserted here by django */}
+                </div>
+            </div>
+            
+            <div style="margin-top: 20px;">
+                <button class="btn" id="refresh-api">Refresh API Data</button>
+                <a href="/store/api/products/" class="btn btn-outline" target="_blank">View Raw API</a>
+            </div>
+            
+            <div style="margin-top: 30px; background: #f8f9fa; padding: 20px; border-radius: var(--border-radius);">
+                <h3>API Endpoints</h3>
+                <p>Access our REST API for integration with your applications:</p>
+                <ul style="list-style-type: none; padding: 0;">
+                    <li style="margin-bottom: 10px;"><strong>Products API:</strong> <code>/store/apiproducts/</code></li>
+                    <li style="margin-bottom: 10px;"><strong>Categories API:</strong> <code>/store/api/categories/</code></li>
+                    <li style="margin-bottom: 10px;"><strong>Orders API:</strong> <code>/store/api/orders/</code></li>
+                </ul>
+            </div>
+        </div>
     </div>
-  </section>
-
-  <!-- Features Section -->
-  <section class="container">
-    <div class="features">
-      <div class="feature-card">
-        <i class="fas fa-truck-fast"></i>
-        <h3>Fast Delivery</h3>
-        <p>Get your orders delivered to your doorstep in record time with our optimized logistics network.</p>
-      </div>
-      <div class="feature-card">
-        <i class="fas fa-shield-alt"></i>
-        <h3>Secure Payments</h3>
-        <p>Shop with confidence using our bank-grade security protocols for all transactions.</p>
-      </div>
-      <div class="feature-card">
-        <i class="fas fa-tags"></i>
-        <h3>Exclusive Deals</h3>
-        <p>Enjoy special discounts and offers available only to SmartStore members.</p>
+    
+  <div class="api-navigation" style="background: #f8f9fa; padding: 15px; border-radius: 8px; margin: 20px 0;">
+      <h3 style="margin-top: 0;">API Access</h3>
+      <p>Explore our API endpoints for integration with your applications:</p>
+      <div style="display: flex; flex-wrap: wrap; gap: 10px;">
+          <a href="/store/products/" class="btn" style="background: #4361ee; color: white; padding: 8px 12px; border-radius: 4px; text-decoration: none;">
+              Products API
+          </a>
+          <a href="/store/categories/" class="btn" style="background: #4361ee; color: white; padding: 8px 12px; border-radius: 4px; text-decoration: none;">
+              Categories API
+          </a>
+          <a href="/store/orders/" class="btn" style="background: #4361ee; color: white; padding: 8px 12px; border-radius: 4px; text-decoration: none;">
+              Orders API
+          </a>
+          <a href="/store/payments/" class="btn" style="background: #4361ee; color: white; padding: 8px 12px; border-radius: 4px; text-decoration: none;">
+              Payments API
+          </a>
+          <a href="{% url 'api-dashboard' %}" class="btn" style="background: #7209b7; color: white; padding: 8px 12px; border-radius: 4px; text-decoration: none;">
+              View All Endpoints
+          </a>
       </div>
     </div>
-  </section>
-
-  <!-- Footer -->
-  <footer>
-    <div class="container footer-content">
-      <p>This project is built to test how api works in real productions</p>
-      <p>&copy; 2025 SmartStore. All rights reserved.</p>
-    </div>
-  </footer>
+    <script>
+        
+        document.querySelectorAll('.tab').forEach(tab => {
+            tab.addEventListener('click', () => {
+                // Remove active class from all tabs
+                document.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
+                // Add active class to clicked tab
+                tab.classList.add('active');
+                
+                // Hide all tab content
+                document.querySelectorAll('.tab-content').forEach(content => content.classList.remove('active'));
+                // Show the selected tab content
+                document.getElementById(`${tab.dataset.tab}-content`).classList.add('active');
+                
+                // If API view is selected, load API data
+                if (tab.dataset.tab === 'api-view') {
+                    loadApiData();
+                }
+            });
+        });
+        
+        // Function to load API data
+        function loadApiData() {
+            const apiLoading = document.getElementById('api-loading');
+            const apiData = document.getElementById('api-data');
+            
+            // Show loading, hide data
+            apiLoading.style.display = 'block';
+            apiData.style.display = 'none';
+            
+            // Fetch data from API
+            fetch('/store/api/products/')
+                .then(response => response.json())
+                .then(data => {
+                    // Format and display JSON data
+                    apiData.innerHTML = syntaxHighlight(JSON.stringify(data, null, 4));
+                    
+                    // Hide loading, show data
+                    apiLoading.style.display = 'none';
+                    apiData.style.display = 'block';
+                })
+                .catch(error => {
+                    console.error('Error fetching API data:', error);
+                    apiLoading.innerHTML = `
+                        <i class="fas fa-exclamation-triangle"></i>
+                        <p>Error loading API data</p>
+                        <p>Please check your console for details</p>
+                    `;
+                });
+        }
+        
+        function syntaxHighlight(json) {
+            if (typeof json !== 'string') {
+                json = JSON.stringify(json, undefined, 2);
+            }
+            
+            json = json.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
+            
+            return json.replace(/("(\\u[a-zA-Z0-9]{4}|\\[^u]|[^\\"])*"(\s*:)?|\b(true|false|null)\b|-?\d+(?:\.\d*)?(?:[eE][+\-]?\d+)?)/g, function (match) {
+                let cls = 'json-number';
+                if (/^"/.test(match)) {
+                    if (/:$/.test(match)) {
+                        cls = 'json-key';
+                    } else {
+                        cls = 'json-string';
+                    }
+                } else if (/true|false/.test(match)) {
+                    cls = 'json-boolean';
+                } else if (/null/.test(match)) {
+                    cls = 'json-null';
+                }
+                return '<span class="' + cls + '">' + match + '</span>';
+            });
+        }
+        
+        // Refresh API data button
+        document.getElementById('refresh-api').addEventListener('click', loadApiData);
+        
+        // Load API data if API view is active on page load
+        if (document.querySelector('.tab.active').dataset.tab === 'api-view') {
+            loadApiData();
+        }
+    </script>
 </body>
 </html>

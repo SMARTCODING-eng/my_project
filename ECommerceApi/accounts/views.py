@@ -8,10 +8,13 @@ from django.urls import reverse_lazy
 from django.utils.decorators import method_decorator
 from django.views.decorators.csrf import csrf_protect
 from django.views.decorators.cache import never_cache
+from rest_framework.response import Response
 from rest_framework import viewsets, permissions
 from .models import User
 from .forms import CustomUserCreationForm
 from .serializers import UserSerializer
+from rest_framework.decorators import api_view, renderer_classes
+from rest_framework.renderers import JSONRenderer, TemplateHTMLRenderer
 
 
 def accounts_home(request):
@@ -98,3 +101,28 @@ class UserViewSet(viewsets.ModelViewSet):
         """Additional actions when creating a user."""
         user = serializer.save()
         return user
+
+def api_dashboard(request):
+    """Render the API dashboard with all endpoints"""
+    context = {
+        'title': 'API Dashboard',
+        'description': 'Access all available API endpoints for integration'
+    }
+    return render(request, 'api_dashboard.html', context)
+
+@api_view(['GET'])
+@renderer_classes([TemplateHTMLRenderer, JSONRenderer])
+def api_docs(request):
+    """API documentation page"""
+    if request.accepted_renderer.format == 'html':
+        return render(request, 'api_documentation.html', {})
+    # Return JSON data for API requests
+    return Response({
+        'message': 'API Documentation',
+        'endpoints': {
+            'products': '/store/api/products/',
+            'categories': '/store/api/categories/',
+            'orders': '/store/api/orders/',
+            'payments': '/store/api/payments/',
+        }
+    })

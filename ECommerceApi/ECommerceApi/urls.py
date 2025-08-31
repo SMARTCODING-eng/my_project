@@ -17,6 +17,7 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path, include 
 from django.views.generic import TemplateView
+from ChloeStore.views import APIDashboardView
 
 
 
@@ -26,6 +27,7 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('store/', include('ChloeStore.urls')),
     path('accounts/', include('accounts.urls')),
-    # path('accounts/', include('django.contrib.auth.urls')),
+    path('api/accounts/', include('django.contrib.auth.urls')),
+    path('api/dashboard/', APIDashboardView.as_view(), name='api-dashboard'),
     
 ]

@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ title }} - ChloeStore</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 20px;
+            background-color: #f5f5f5;
+        }
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            background: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+        h1 {
+            color: #333;
+        }
+        p {
+            color: #666;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>{{ title }}</h1>
+        <p>{{ description }}</p>
+        
+        <h2>API Endpoints</h2>
+        <ul>
+            <li><strong>Accounts</li>
+            <li><strong>Products API:</strong> /store/api/products/</li>
+            <li><strong>Categories API:</strong> /store/api/categories/</li>
+            <li><strong>Orders API:</strong> /store/api/orders/</li>
+            <li><strong>Payments API:</strong> /store/api/payments/</li>
+        </ul>
+        
+        <h2>Usage</h2>
+        <p>Visit these endpoints in your browser or use tools like curl or Postman to interact with the API.</p>
+    </div>
+</body>
+</html>

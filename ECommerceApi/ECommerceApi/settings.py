@@ -28,7 +28,7 @@ SECRET_KEY = 'django-insecure-uhwpky-bz0le(o$5cr=fk3%#i1!a$*bud(acuf3mug%5+%x&9k
 DEBUG = False
 # os.environ.get('DEBUG', 'False').lower() == 'true'
 
-ALLOWED_HOSTS = ['follysmart.pythonanywhere.com']
+ALLOWED_HOSTS = ["https://follysmart.pythonanywhere.com"]
 # RENDER_EXTERNAL_HOSTNAME = os.environ.get('RENDER_EXTERNAL_HOSTNAME')
 # if RENDER_EXTERNAL_HOSTNAME:
 #     ALLOWED_HOSTS = [RENDER_EXTERNAL_HOSTNAME, '127.0.0.1', 'localhost']
@@ -167,6 +167,7 @@ REST_FRAMEWORK = {
     ],
     'DEFAULT_RENDERER_CLASSES': [
         'rest_framework.renderers.JSONRenderer',
+        'rest_framework.renderers.BrowsableAPIRenderer',
     ],
     'DEFAULT_PAGINATION_CLASS': 'rest_framework.pagination.PageNumberPagination',
     'PAGE_SIZE': 20,
